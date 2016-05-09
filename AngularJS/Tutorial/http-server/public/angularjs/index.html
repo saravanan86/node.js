@@ -1,0 +1,36 @@
+<!doctype html>
+<html ng-app="angularjsApp">
+<head>
+    <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>-->
+    <script type="text/javascript" src="https://code.angularjs.org/1.5.5/angular.js"></script>
+    <script type="text/javascript" src="scripts/controllers.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/todo.css"/>
+</head>
+<body>
+    <div ng-controller="TodoCtrl">
+        {{totalRoots}}
+        <br/><br/>
+        Two times of <input ng-model="num" style="width:20px" /> equals {{double(num)}}
+        <br/><br/>
+        <div ng-controller="SpicyController" >
+            <button ng-click="chillySpicy()">Chilly</button><button ng-click="jalleponoSpicy()">Jallepono</button><br/>
+            <input ng-model="customize"/> <button ng-click="customizeSpicy()">Customize</button> <br/>
+            This is {{spicy}} spicy.
+        </div>
+    </div>
+    <div ng-controller="TodoController">
+        <h2> Total todos: {{getTotalTodos()}}</h2><br/>
+        <ul class="list-unstyled">
+            <li ng-repeat="todo in todos" class="completed-{{todo.done}}" >
+                <input type="checkbox" ng-model="todo.done"> {{todo.name}}
+            </li>
+        </ul>
+        <form class="form-horizontal">
+            <input type="text" ng-model="todoText" /> <button class="btn" ng-click="addTodo()"><i class="glyphicon-plus"></i> Add </button>
+            <br/>
+            <button type="btn" ng-click="clearAll()"><i class="glyphicon-trash"></i> Clear completed </button>
+        </form>
+    </div>
+</body>
+</html>
